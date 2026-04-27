@@ -117,7 +117,7 @@ const SignUpPage = () => {
 
             <div className={`${loading ? 'grid justify-center text-2xl text-center font-bold mt-5' : 'hidden'}`}>
                 <h1>Processing Your Request</h1>
-                <BarLoader className="mt-3 w-full" />
+                <BarLoader color="#28a8de" />
             </div>
         </div>
     );

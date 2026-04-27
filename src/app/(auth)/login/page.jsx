@@ -14,7 +14,7 @@ const LogInPage = () => {
         data: session
     } = authClient.useSession()
 
-    const userName = session?.user.name.toUpperCase(); 
+    const userName = session?.user.name.toUpperCase();
 
     const [loading, setLoading] = useState(false);
 
@@ -118,7 +118,7 @@ const LogInPage = () => {
                 className={`${loading ? 'grid justify-center text-2xl text-center font-bold mt-5' : 'hidden'}`}
             >
                 <h1>Processing Your Request</h1>
-                <BarLoader />
+                <BarLoader color="#28a8de" />
             </div>
         </div>
     );
