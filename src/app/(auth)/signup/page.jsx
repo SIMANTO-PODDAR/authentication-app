@@ -22,9 +22,9 @@ const SignUpPage = () => {
         const userData = Object.fromEntries(formData.entries());
 
         const { data, error } = await authClient.signUp.email({
-            name: userData.name,
-            email: userData.email,
-            password: userData.password,
+            name: userData.name.toString(),
+            email: userData.email.toString(),
+            password: userData.password.toString(),
         },
             {
                 onSuccess: () => {
