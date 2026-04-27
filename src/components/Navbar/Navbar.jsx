@@ -12,18 +12,18 @@ const Navbar = () => {
     const userName = session?.user?.name?.toUpperCase();
 
     const LogOut = async () => {
-            if (userName) {
-                await authClient.signOut({
-                    fetchOptions: {
-                        onSuccess: () => {
-        toast.success(' Successfully Log Out!');
-                        },
+        if (userName) {
+            await authClient.signOut({
+                fetchOptions: {
+                    onSuccess: () => {
+                        toast.success(' Successfully Log Out!');
                     },
-                });
-            }
-            else {
-                toast('Log In First!');
-            }
+                },
+            });
+        }
+        else {
+            toast('Log In First!');
+        }
 
     }
 
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <Link href='/profile' className="font-bold ">
                     <Button className='bg-green-800 max-w-35'>
                         <span className="flex items-center ">Profile:</span>
-                        <span className="text-xs"> {userName ? userName :  <Loader />} </span>
+                        <span className="text-xs"> {userName ? userName : <Loader />} </span>
                     </Button>
                 </Link>
 
