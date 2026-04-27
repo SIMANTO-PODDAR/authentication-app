@@ -5,7 +5,7 @@ import { Button, Description, FieldError, Form, Input, Label, TextField } from "
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BarLoader } from "react-spinners";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 const LogInPage = () => {
@@ -15,43 +15,45 @@ const LogInPage = () => {
     // } = authClient.useSession()
 
     // const userName = session?.user.name.toUpperCase();
+    const userName = 'Simanto'; //session?.user.name.toUpperCase(); 
 
     const [loading, setLoading] = useState(false);
 
     const router = useRouter()
 
 
-    // const onSubmit = async (e) => {
-    //     setLoading(true);
+    const onSubmit = async (e) => {
 
-    //     e.preventDefault();
-    //     const formData = new FormData(e.currentTarget);
-    //     const userData = Object.fromEntries(formData.entries());
+        setLoading(true);
+        e.preventDefault();
 
-    //     if (userName) {
-    //         toast.error(`
-    //                 ${userName}, You are already logged in!
-    //                 Please log out before logging in again.
-    //             `)
-    //         setLoading(false);
-    //         return
-    //     }
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
 
-    //     const { data, error } = await authClient.signIn.email({
-    //         email: userData.email,
-    //         password: userData.password
-    //     });
+        if (userName) {
+            toast.error(`
+                    ${userName}, You are already logged in!
+                    Please log out before logging in again.
+                `)
+            setLoading(false);
+            return
+        }
 
-    //     if (!data) {
-    //         toast.error(error.message)
-    //     }
-    //     else {
-    //         toast.success(`Successfully Log In`)
-    //         router.push('/profile')
-    //     }
+        // const { data, error } = await authClient.signIn.email({
+        //     email: userData.email,
+        //     password: userData.password
+        // });
 
-    //     setLoading(false);
-    // };
+        if (!data) {
+            toast.error(error.message)
+        }
+        else {
+            toast.success(`Successfully Log In`)
+            router.push('/profile')
+        }
+
+        setLoading(false);
+    };
 
     return (
         <div className=" mt-5">
@@ -59,9 +61,7 @@ const LogInPage = () => {
 
             <div className={`${!loading ? 'flex justify-center' : 'hidden'}`}>
 
-                <Form className="flex w-96 flex-col gap-4 mt-5"
-                // onSubmit={onSubmit}
-                >
+                <Form className="flex w-96 flex-col gap-4 mt-5" onSubmit={onSubmit}>
 
 
                     <TextField

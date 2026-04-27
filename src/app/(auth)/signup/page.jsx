@@ -5,7 +5,7 @@ import { Button, Description, FieldError, Form, Input, Label, TextField } from "
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BarLoader } from "react-spinners";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 const SignUpPage = () => {
@@ -14,32 +14,32 @@ const SignUpPage = () => {
 
     const router = useRouter()
 
-    // const onSubmit = async (e) => {
-    //     setLoading(true);
+    const onSubmit = async (e) => {
+        setLoading(true);
+        e.preventDefault();
 
-    //     e.preventDefault();
-    //     const formData = new FormData(e.currentTarget);
-    //     const userData = Object.fromEntries(formData.entries());
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
 
-    //     const { data, error } = await authClient.signUp.email({
-    //         name: userData.name,
-    //         email: userData.email,
-    //         password: userData.password,
-    //     },
-    //         {
-    //             onSuccess: () => {
-    //                 toast.success(' Successfully Sign Up')
-    //                 router.push('/profile')
-    //             }
-    //         }
-    //     );
+        // const { data, error } = await authClient.signUp.email({
+        //     name: userData.name,
+        //     email: userData.email,
+        //     password: userData.password,
+        // },
+        //     {
+        //         onSuccess: () => {
+        toast.success(' Successfully Sign Up')
+        //             router.push('/profile')
+        //         }
+        //     }
+        // );
 
-    //     if (!data) {
-    //         toast.warning(error.message)
-    //     }
+        // if (!data) {
+        //     toast.warning(error.message)
+        // }
 
-    //     setLoading(false);
-    // };
+        setLoading(false);
+    };
 
     return (
         <div className=" mt-5">
@@ -47,9 +47,7 @@ const SignUpPage = () => {
 
             <div className={`${!loading ? 'flex justify-center' : 'hidden'}`}>
 
-                <Form className="flex w-96 flex-col gap-4 mt-5"
-                    // onSubmit={onSubmit}
-                >
+                <Form className="flex w-96 flex-col gap-4 mt-5" onSubmit={onSubmit} >
 
                     <TextField
                         isRequired

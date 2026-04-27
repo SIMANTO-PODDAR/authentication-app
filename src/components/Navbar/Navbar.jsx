@@ -7,27 +7,25 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
 
-    // const {
-    //     data: session
-    // } = authClient.useSession()
+    // const { data: session } = authClient.useSession()
 
     // const userName = session?.user?.name?.toUpperCase();
 
-    // const LogOut = async () => {
-    //     if (userName == true) {
-    //         await authClient.signOut({
-    //             fetchOptions: {
-    //                 onSuccess: () => {
-    //                     toast.success(' Successfully Log Out!');
-    //                 },
-    //             },
-    //         });
-    //     }
-    //     else {
-    //         toast('Log In First!');
-    //     }
+    const LogOut = async () => {
+        //     if (userName) {
+        //         await authClient.signOut({
+        //             fetchOptions: {
+        //                 onSuccess: () => {
+        toast.success(' Successfully Log Out!');
+        //                 },
+        //             },
+        //         });
+        //     }
+        //     else {
+        //         toast('Log In First!');
+        //     }
 
-    // }
+    }
 
     return (
         <div>
@@ -44,9 +42,7 @@ const Navbar = () => {
                     <Button> Log In </Button>
                 </Link>
 
-                <Button
-                    //   onClick={LogOut} 
-                    className="flex justify-center my-3 bg-red-400"> Log Out </Button>
+                <Button onClick={LogOut} className="flex justify-center my-3 bg-red-400"> Log Out </Button>
 
                 <Link href='/profile' className="font-bold ">
                     <Button className='bg-green-800 max-w-35'>
