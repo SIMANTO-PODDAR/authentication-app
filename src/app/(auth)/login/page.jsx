@@ -14,7 +14,7 @@ const LogInPage = () => {
         data: session
     } = authClient.useSession()
 
-    const userName = session?.user.name.toUpperCase();
+    const user = session?.user;
 
     const [loading, setLoading] = useState(false);
 
@@ -29,9 +29,9 @@ const LogInPage = () => {
         const formData = new FormData(e.currentTarget);
         const userData = Object.fromEntries(formData.entries());
 
-        if (userName) {
+        if (user) {
             toast.error(`
-                    ${userName}, You are already logged in!
+                    ${user.name.toUpperCase()}, You are already logged in!
                     Please log out before logging in again.
                 `)
             setLoading(false);
