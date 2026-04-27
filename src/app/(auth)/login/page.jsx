@@ -1,5 +1,5 @@
 "use client";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -10,12 +10,11 @@ import { toast } from "react-toastify";
 
 const LogInPage = () => {
 
-    // const {
-    //     data: session
-    // } = authClient.useSession()
+    const {
+        data: session
+    } = authClient.useSession()
 
-    // const userName = session?.user.name.toUpperCase();
-    const userName = 'Simanto'; //session?.user.name.toUpperCase(); 
+    const userName = session?.user.name.toUpperCase(); 
 
     const [loading, setLoading] = useState(false);
 
@@ -39,10 +38,10 @@ const LogInPage = () => {
             return
         }
 
-        // const { data, error } = await authClient.signIn.email({
-        //     email: userData.email,
-        //     password: userData.password
-        // });
+        const { data, error } = await authClient.signIn.email({
+            email: userData.email,
+            password: userData.password
+        });
 
         if (!data) {
             toast.error(error.message)

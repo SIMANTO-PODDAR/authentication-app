@@ -1,20 +1,17 @@
 "use client"
-// import { authClient } from '@/lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
 
 const ProfilePage = () => {
 
-    // const {
-    //     data: session
-    // } = authClient.useSession()
+    const {
+        data: session
+    } = authClient.useSession()
 
-    // const userName = session?.user.name.toUpperCase();
-    // const userEmail = session?.user.email.toLowerCase();
+    const userName = session?.user.name.toUpperCase();
+    const userEmail = session?.user.email.toLowerCase();
 
-    if (
-        // !userName
-        true //
-    ) {
+    if (!userName) {
         return (
             <div className='grid justify-center text-left mt-3 font-bold text-xl'>
                 <h1>Please Log In first to visit Profile!</h1>

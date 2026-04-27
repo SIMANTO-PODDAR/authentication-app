@@ -1,29 +1,29 @@
 'use client'
 import { Button } from "@heroui/react";
 import Link from "next/link";
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import { BounceLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
 
-    // const { data: session } = authClient.useSession()
+    const { data: session } = authClient.useSession()
 
-    // const userName = session?.user?.name?.toUpperCase();
+    const userName = session?.user?.name?.toUpperCase();
 
     const LogOut = async () => {
-        //     if (userName) {
-        //         await authClient.signOut({
-        //             fetchOptions: {
-        //                 onSuccess: () => {
+            if (userName) {
+                await authClient.signOut({
+                    fetchOptions: {
+                        onSuccess: () => {
         toast.success(' Successfully Log Out!');
-        //                 },
-        //             },
-        //         });
-        //     }
-        //     else {
-        //         toast('Log In First!');
-        //     }
+                        },
+                    },
+                });
+            }
+            else {
+                toast('Log In First!');
+            }
 
     }
 
@@ -46,8 +46,8 @@ const Navbar = () => {
 
                 <Link href='/profile' className="font-bold ">
                     <Button className='bg-green-800 max-w-35'>
-                        <span className="flex items-center ">Profile: <Loader /></span>
-                        {/* <span className="text-xs"> {userName ? userName : } </span> */}
+                        <span className="flex items-center ">Profile:</span>
+                        <span className="text-xs"> {userName ? userName :  <Loader />} </span>
                     </Button>
                 </Link>
 
