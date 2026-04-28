@@ -31,7 +31,8 @@ const ProfilePage = () => {
             <div className='grid justify-center text-left mt-3 font-bold text-xl'>
                 <h1 className='text-center text-2xl my-2 underline'>Profile</h1>
 
-                <Image className='rounded-full' src={user.image} alt='user img' width={100} height={100} />
+                <Image className='rounded-full'
+                    src={user.image && user.image } alt='user img' width={100} height={100} />
 
                 <h1>Name:  <span>{user.name.toUpperCase()}</span> </h1>
                 <h1>Email: <span className='italic'>{user.email.toLowerCase()}</span> </h1>
