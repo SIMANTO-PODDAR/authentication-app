@@ -1,4 +1,5 @@
 "use client";
+import GoogleLogin from "@/components/GoogleLogIn/GoogleLogin";
 import Navbar from "@/components/Navbar/Navbar";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
@@ -124,6 +125,7 @@ const SignUpPage = () => {
                     <BarLoader color="#28a8de" />
                 </div>
             </div>
+            <GoogleLogin />
         </>
     );
 };
